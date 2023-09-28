@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <nav>
+            <label>
+                <h1> Navigation</h1>
+            </label>
+            <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+            <menu>
+              <li><a href="login.html">Login</a></li>
+              <li><a href="home.html">Home</a></li>
+              <li><a href="scores.html">Scores</a></li>
+              <li><a href="about.html">About</a></li>
+            </menu>
+          </nav>
+    </header>
+    <body>
+        <main>
+            <head>
+                <h1> TrickTracker </h1>
+                <img alt="skateboarder" src="images/skateboarder.jpg" width = 200/>
+                <section>
+                    <p>Next Trick</p>
+                    <table border = 1e>
+                      <tr>
+                        <td>Trick: Easy: Tail Stall</td>
+                      </tr>
+                      <tr>
+                        <td>Trick: Medium: Frontside 50-50</td>
+                      </tr>
+                      <tr>
+                        <td>Trick: Hard: Blunt To Fakie</td>
+                      </tr>
+                    </table>
+                  </section>
+                  <section>
+                    <p>Tricks</p>
+                    <table>
+                        <tr>
+                            <legend>Level:</legend>
+                            <fieldset>
+                                <label for="easy">Easy</label>
+                                <input type="radio" id="easyRadio" name="easy" value="easy" checked />
+                                <label for="medium">Medium</label>
+                                <input type="radio" id="mediumRadio" name="medium" value="medium" />
+                                <label for="hard">Hard</label>
+                                <input type="radio" id="hard" name="hard" value="hard" />
+                            </fieldset>
+                        </tr>
+                        <tr>
+                            <table border=" = 1">
+                                <legend>Trick List</legend>
+                                    <tr>
+                                        <td>
+                                            <label for="trick1">1. Dropping in:</label>
+                                            <input type="checkbox" id="trick1" name="" value="checkbox1" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <label for="trick2">2. Rock to Fakie:</label>
+                                            <input type="checkbox" id="trick2" name="" value="checkbox2" />
+                                        </td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="trick3">3. Tailstall:</label>
+                                            <input type="checkbox" id="trick3" name="" value="checkbox3" />
+                                        </td>
+                                        
+                                </tr>
+                                
+                            </table>
+                        </tr>
+                        <tr>
+                            <legend>Add Trick:</legend>
+                            <label for="addTrick">Name/Description: </label>
+                            <input type="text" id="addTrick" name="addTrick" placeholder="EX: Rock to Fakie" required pattern="[Aa].*" />
+                            <label> Difficulty:</label>
+                            <select id = "difficultySelect">
+                                <option selected option> Easy </option>
+                                <option> Medium </option>
+                                <option>Hard</option>
+                            </select>
+                            <label> Direction:</label>
+                            <select id = "directionSelect">
+                                <option selected option> Backside </option>
+                                <option> Frontside </option>
+                            </select>
+                            <button>
+                                <label> Add Trick</label>
+                            </button>
+                        </tr>
+                    </table>
+                  </section>
+            </head>
+        </main>
+    </body>
+    <footer>
+        <hr />
+        <span class="text-reset">Author Name(s)</span>
+        <br />
+        <a href="https://github.com/jtappen1/Startup">GitHub</a>
+      </footer>
+
+</html>
