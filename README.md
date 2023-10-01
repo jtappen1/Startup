@@ -31,5 +31,15 @@ Login - Register and login users. Credentials securely stored in database. Can't
 WebSocket - When a new trick is learned, you will receive an amount of points for it.  You can see other user's points and there will be a leaderboard.
 React - Application ported to use the React web framework.
 
+HTML
+- HTML pages for each component of your application: I made a login, home, leaderboard, and profile pages.  That is all the html for my application
+- Links between pages as necessary: I put links at the top of every page that connect to the other pages.
+- Application textual content: I added text for the main table that will be used for tracking tricks and every other section that would be used.
+- Placeholder for 3rd party service calls: I created a table with next tricks and a table that tracks tricks that currently act as a placeholder for third party calls.
+- Application images: I added a picture on the home screen of TrickTracker.
+- Login placeholder, including user name display :I created a login page and in profile a place to see your username.
+- Database data placeholder showing content stored in the database: I did this in the main tricktracker page, in the table it shows a few tricks that a user could have added and gotten from the database.
+- WebSocket data placeholder showing where realtime communication will go:  I created a leaderboards placeholder that will be updated when a new trick is learned.
+
 
 
