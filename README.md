@@ -41,5 +41,14 @@ HTML
 - Database data placeholder showing content stored in the database: I did this in the main tricktracker page, in the table it shows a few tricks that a user could have added and gotten from the database.
 - WebSocket data placeholder showing where realtime communication will go:  I created a leaderboards placeholder that will be updated when a new trick is learned.
 
+CSS
+- Header, footer, and main content body
+- Navigation elements: I am able to navigate between things.
+- Responsive to window resizing: My app looks great on all window sizes and devices.
+- Application elements: Used good contrast and whitespace.
+- Application text content: Made the text good colors and with consistent fonts.
+- Application images: The background is an image and there is a picture of a skateboarder on the home page.
+
+
 
 
