@@ -1,41 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-    <header>
-        <nav>
-            <label>
-                <h1> Navigation</h1>
-            </label>
-            <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
-            <menu>
-              <li><a href="login.html">Login</a></li>
-              <li><a href="home.html">Home</a></li>
-              <li><a href="leaderboard.html">Leaderboard</a></li>
-              <li><a href="profile.html">Profile</a></li>
-            </menu>
-          </nav>
-    </header>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- Tell browsers not to scale the viewport automatically -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+        <link rel="stylesheet" href="main.css" />
+    
+        <!-- Include bootstrap CSS framework -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous"
+        />
+    </head>
+    <header class= "container-fluid bg-dark text-light">
+        <nav class="navbar fixed-top navbar-dark">
+            <div class="parent">
+                <div class="child">
+                    <h1  <h1 class="company-name"> TRICKTRACKER</h1></h1>
+                </div>
+                <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+                <div class = "child">
+                    <menu class="navbar-nav ">
+                        <li class="nav-item"><a class="nav-link active"  href="index.html">Login</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="leaderboard.html">Leaderboard</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="profile.html">Profile</a></li>
+                    </menu>
+                </div>  
+            </div>  
+        </nav>
+      </header>
 
     <main>
-        <h1>Profile</h1>
-        <table>
-            <tr>
-                <td><label for="text">Name: </label>
-                    <input type="text" id="text" name="varText" placeholder="insert name here" required pattern="[Aa].*" /></td>
-            </tr>
-            <tr>
-                <td><label for="text">Username: </label>
-                    <input type="text" id="text" name="varText" placeholder="insert username" required pattern="[Aa].*" /></td>
-            </tr>
-            <tr>
-                <td><label for="text">Trick Score: 100 </label></td>
-                </tr>
-        </table>
+        <div class="box1">
+            <h1>Profile</h1>
+        </div>
+        <div class="container-s">
+            <table class="table table-light" border = 3>
+                <tbody>
+                    <tr>
+                        <td><label for="text">Name: </label>
+                            <input type="text" id="text" name="varText" placeholder="insert name here" required pattern="[Aa].*" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="text">Username: </label>
+                            <input type="text" id="text" name="varText" placeholder="insert username" required pattern="[Aa].*" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="text">Trick Score: 100 </label></td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
-    <footer>
-        <hr />
-        <span class="text-reset">Author Name(s)</span>
-        <br />
-        <a href="https://github.com/jtappen1/Startup">GitHub</a>
-    </footer>
-
+    <footer class="bg-dark text-white-50">
+        <div>
+          <span class="text-reset">Author Name(s)</span>
+          <a href="https://github.com/jtappen1/Startup">GitHub</a>
+        </div>
+      </footer>
 </html>
