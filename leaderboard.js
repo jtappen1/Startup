@@ -1,8 +1,12 @@
 let usersGlobal;
 let userRowFormat = "<tr><td>Template Name</td><td>Template Points</td><td>Template NumTricks</td></tr>";
 let noUserRowFormat = "<tr><td>Sign-in to track your tricks!</td><td>0</td><td>0</td></tr>"
+let userName;
+
+
 
 function setUpLeaderBoards(){
+
     let users;
     if(localStorage.getItem('users') == null){
         users  = new Map();
@@ -13,11 +17,17 @@ function setUpLeaderBoards(){
         users = new Map(JSON.parse(localStorage.getItem('users')));
         usersGlobal = users;
     }
+
+    if(localStorage.getItem('username') != null){
+        userName = JSON.parse(localStorage.getItem('username'));
+    }
+    else{
+        userName = null;
+    }
     setTrickInfo(users);
 }
 
 function setTrickInfo(users){
-    let userName = JSON.parse(localStorage.getItem('username'));
     let tricks = getTricks();
     let trickScore = 0;
     const numTricks = tricks.length;
@@ -36,7 +46,7 @@ function setTrickInfo(users){
     }
 
     if(users.get(userName) == null && userName != null){
-        const newUser = {name: userName, trickScore: trickScore, numTricks:numTricks};
+        const newUser = {name: "", username: userName, trickScore: trickScore, numTricks:numTricks};
         users.set(userName, newUser);
     }
     else if(users.get(userName)!= null){
@@ -59,7 +69,7 @@ function updateUsers(users){
         for(let i = 0; i< usersArray.length; i++){
             let specificUser = usersArray[i];
             let template = userRowFormat.slice()
-            template = template.replace('Template Name', specificUser[1].name);
+            template = template.replace('Template Name', specificUser[1].username);
             template = template.replace('Template Points', specificUser[1].trickScore);
             template = template.replace('Template NumTricks', specificUser[1].numTricks);
             usersTableBodyEl.innerHTML += template;
@@ -71,3 +81,5 @@ function updateUsers(users){
 function getTricks(){
     return JSON.parse(localStorage.getItem('tricks'));
 }
+
+//////// Start of Profile Functions

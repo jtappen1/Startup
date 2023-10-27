@@ -1,4 +1,4 @@
-const trickRowFormat = "<tr><td> <input type='checkbox' id='trick1' name='trick1' value='checkbox1' onclick = 'changeCheck(SpecificID)' /></td><td><label for='trick1'>Template Name</label> </td><td> <button type='button' onclick='login()'>Desc.</button></td></tr>";
+const trickRowFormat = "<tr><td> <input type='checkbox' id='trick1' name='trick1' value='checkbox1' onclick = 'changeCheck(SpecificID)' /></td><td><label for='trick1'>Template Name</label> </td><td> <button id ='infoBtn' onclick = 'showModals()' class='primary';'>Info</button><dialog id='dialog'><h2>Trick: Template Trick Name</h2><p>Direction: Template Direction</p><p>Difficulty: Template Difficulty</p><p>Description: Template Description</p><button id ='closeBtn' onclick = 'closeModals()' aria-label='close' class='x'>❌</button></dialog></td></tr>";
 const addTrickFormat = "<tr><td></td><td><label for='trick1'> Add a Trick!</label></td><td></td></tr>";
 
 
@@ -115,6 +115,10 @@ function loadTricks(whichTricks) {
                     let template = trickRowFormat.slice()
                     template = template.replace('Template Name', specificTrick.name);
                     template = template.replace('SpecificID', specificTrick.id);
+                    template = template.replace('Template Trick Name', specificTrick.name);
+                    template = template.replace('Template Direction', specificTrick.direction);
+                    template = template.replace('Template Difficulty', specificTrick.difficulty);
+                    template = template.replace('Template Description', specificTrick.description);
                     tableBodyEl.innerHTML += template;
                     
                 }
@@ -138,10 +142,10 @@ function updateTricks(){
     const trickDiff = document.querySelector('#difficultySelect').value;
     console.log("The difficulty return val" + trickDiff);
     const descript = "This is a dummy value";
-    const backside = "This is a dummy value";
+    const backside = document.querySelector('#direction').value;
     
     let idNum = tricksArray.length;
-    const newTrick = {name: trickName, description: descript, difficulty: trickDiff, backside: backside, checked: "False", id: idNum};
+    const newTrick = {name: trickName, description: descript, difficulty: trickDiff, direction: backside, checked: "False", id: idNum};
 
     tricksArray.push(newTrick);
     
@@ -149,4 +153,24 @@ function updateTricks(){
     localStorage.setItem('tricks', string);
     loadTricks();
     // return tricks;
+}
+
+function showModals(){
+    const infoBtn = document.getElementById('infoBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const dialog = document.getElementById('dialog');
+    dialog.showModal();
+    // infoBtn.addEventListener("click", () => {
+    //     dialog.showModal();
+    // });
+    // closeBtn.addEventListener("click", () => {
+    //     dialog.close();
+    // });
+
+}
+function closeModals(){
+    const infoBtn = document.getElementById('infoBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    const dialog = document.getElementById('dialog');
+    dialog.close();
 }
