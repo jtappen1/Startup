@@ -19,7 +19,7 @@
     </head>
 
     <header class= "container-fluid bg-dark text-light">
-        <nav class="navbar fixed-top navbar-dark">
+        <nav>
           <div class="parent">
               <div class="child">
                   <h1 class="company-name"> TRICKTRACKER</h1>
@@ -36,133 +36,113 @@
           </div>  
           </nav>
         </header>
-        <main class="container-fluid text-center">
-            <div class="row">
-                <div class="col container-s">
+        <body onload="loadTricks('Easy')">
+            <main class="container-fluid text-center">
+                <div class="row">
+                    <div class="col container-s">
+                        <table class="table table-warning table-striped-columns">
+                            <p>Next Trick</p>
+                            <thead class="table-dark">
+                                <tr>
+                                    <td>Trick </td>
+                                    <td> Difficulty</td>
+                                </tr>
+                            </thead>
+                            <tbody class="table-light">
+                                <tr>
+                                    <td>Tail Stall</td>
+                                    <td>Easy</td>
+                                </tr>
+                                <tr>
+                                    <td>Frontside 50-50</td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr>
+                                    <td>Blunt To Fakie</td>
+                                    <td>Hard</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class = "col-md-auto">
+    
+                    </div>
+                    <div class="col">
+                        <img alt="skateboarder" src="images/intropic.jpg" width = 200/>
+                    </div>
+                    
+                </div>
+                    <!-- <h1> TrickTracker </h1> -->
+                <div class="row">
                     <table class="table table-warning table-striped-columns">
-                        <p>Next Trick</p>
                         <thead class="table-dark">
+                            
                             <tr>
-                                <td>Trick </td>
-                                <td> Difficulty</td>
+                                <td>
+                                    <label>
+                                        <p>Level:</p>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label for="easy">Easy</label>
+                                    <input type="radio" id="easy" name="difficulty" value="Easy" checked onclick="changeDifficulty()" />
+                                    <label for="medium">Medium</label>
+                                    <input type="radio" id="medium" name="difficulty" value="Medium" onclick="changeDifficulty()" />
+                                    <label for="hard">Hard</label>
+                                    <input type="radio" id="hard" name="difficulty" value="Hard" onclick="changeDifficulty()"/>
+                                </td>
+                                <td>
+                                    <button type = "submit" onclick = "clearStorage()"> Clear </button>
+                                </td>
                             </tr>
                         </thead>
-                        <tbody class="table-light">
+                            <tbody class = "table-light" id="tricks">
+                                <tr>
+                                    <td>
+    
+                                    </td>
+                                    <td>
+                                        <label for="trick1"> Add a Trick!</label>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        
+                        <tfoot class = table-warning>
                             <tr>
-                                <td>Tail Stall</td>
-                                <td>Easy</td>
+                                <td>
+                                    <label>
+                                        <p>Add Trick:</p>
+                                    </label>
+                                </td>
+                                <td>
+                                    <label for="addTrick">Name/Description: </label>
+                                    <input type="text" id="addTrick" name="addTrick" placeholder="EX: Rock to Fakie" required pattern="[Aa].*" />
+                                    <label> Difficulty:</label>
+                                    <select id = "difficultySelect">
+                                        <option selected option> Easy </option>
+                                        <option> Medium </option>
+                                        <option>Hard</option>
+                                    </select>
+                                    <label> Direction:</label>
+                                    <select id = "directionSelect">
+                                        <option selected option> Backside </option>
+                                        <option> Frontside </option>
+                                    </select>
+                                    <button type="submit" onclick = "updateTricks()"> Add Trick</button>
+                                </td>
+                                <td>
+    
+                                </td>
                             </tr>
-                            <tr>
-                                <td>Frontside 50-50</td>
-                                <td>Medium</td>
-                            </tr>
-                            <tr>
-                                <td>Blunt To Fakie</td>
-                                <td>Hard</td>
-                            </tr>
-                        </tbody>
+                        </tfoot>
                     </table>
                 </div>
-                <div class = "col-md-auto">
-
-                </div>
-                <div class="col">
-                    <img alt="skateboarder" src="images/intropic.jpg" width = 200/>
-                </div>
-                
-            </div>
-                <!-- <h1> TrickTracker </h1> -->
-            <div class="row">
-                <table class="table table-warning table-striped-columns">
-                    <thead class="table-dark">
-                        
-                        <tr>
-                            <td>
-                                <label>
-                                    <p>Level:</p>
-                                </label>
-                            </td>
-                            <td>
-                                <label for="easy">Easy</label>
-                                <input type="radio" id="easy" name="difficulty" value="Easy" checked onclick="changeDifficulty()" />
-                                <label for="medium">Medium</label>
-                                <input type="radio" id="medium" name="difficulty" value="Medium" onclick="changeDifficulty()" />
-                                <label for="hard">Hard</label>
-                                <input type="radio" id="hard" name="difficulty" value="Hard" onclick="changeDifficulty()"/>
-                            </td>
-                            <td>
-
-                            </td>
-                        </tr>
-                    </thead>
-                        <tbody class = "table-light" id="tricks">
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="trick1" name="" value="checkbox1" />
-                                </td>
-                                <td>
-                                    <label for="trick1">1. Dropping in:</label>
-                                    
-                                </td>
-                                <td>
-                                    <button type="submit" onclick="login() ">Desc.</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="trick2" name="" value="checkbox2" />
-                                </td>
-                                <td>
-                                    <label for="trick2">2. Rock to Fakie:</label>
-                                </td>
-                                <td>
-                                    <button type="submit" onclick="login() ">Desc.</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" id="trick3" name="" value="checkbox3" />
-                                </td>
-                                <td>
-                                    <label for="trick3">3. Tailstall:</label>
-                                </td>
-                                <td>
-                                    <button type="submit" onclick="login() ">Desc.</button>
-                                </td>   
-                            </tr>
-                        </tbody>
-                    
-                    <tfoot class = table-warning>
-                        <tr>
-                            <td>
-                                <label>
-                                    <p>Add Trick:</p>
-                                </label>
-                            </td>
-                            <td>
-                                <label for="addTrick">Name/Description: </label>
-                                <input type="text" id="addTrick" name="addTrick" placeholder="EX: Rock to Fakie" required pattern="[Aa].*" />
-                                <label> Difficulty:</label>
-                                <select id = "difficultySelect">
-                                    <option selected option> Easy </option>
-                                    <option> Medium </option>
-                                    <option>Hard</option>
-                                </select>
-                                <label> Direction:</label>
-                                <select id = "directionSelect">
-                                    <option selected option> Backside </option>
-                                    <option> Frontside </option>
-                                </select>
-                                <button type="submit" onclick = "updateTricks()"> Add Trick</button>
-                            </td>
-                            <td>
-
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </main>
+            </main>
+        </body>
+        
 
     <footer class="bg-dark text-white-50">
         <div>

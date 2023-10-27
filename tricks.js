@@ -1,39 +1,82 @@
+const trickRowFormat = "<tr><td> <input type='checkbox' id='trick1' name='trick1' value='checkbox1' onclick = 'changeCheck(SpecificID)' /></td><td><label for='trick1'>Template Name</label> </td><td> <button type='button' onclick='login()'>Desc.</button></td></tr>";
+const addTrickFormat = "<tr><td></td><td><label for='trick1'> Add a Trick!</label></td><td></td></tr>";
+
+
+function getDifficulty(ele, i){
+        if(i == 0){
+            return 'Easy';
+        }
+        else if(i ==1){
+            return('Medium');
+        }
+        else if(i == 2){
+            return('Hard');
+        }
+        else{
+            return('All');
+        }
+}
 
 function changeDifficulty(){
     var ele = document.getElementsByName('difficulty')
     clearTable();
     for (i = 0; i < ele.length; i++) {
         if (ele[i].checked){
-            if(i == 0){
-                loadTricks("Easy");
-            }
-            else if(i ==1){
-                loadTricks("Medium");
-            }
-            else if(i == 2){
-                loadTricks("Hard");
-            }
-            else{
-                loadTricks('all');
-            }
+            loadTricks(getDifficulty(ele, i));
         }
     }
 }
-function clearTable(){
-    var tricks = document.getElementById("trickRow");
-    for(trick in tricks.entries()){
-        trick.remove();
-    }
 
+function changeCheck(id){
+    let tricks = [];
+    tricks = JSON.parse(localStorage.getItem('tricks'));
+    // if (tricksText) {
+    //   tricks = tricksText;
+    // }
+    if(tricks[id].checked == 'True'){
+        tricks[id].checked = 'False';
+        console.log('False');
+    }
+    else{
+        tricks[id].checked = 'True';
+        console.log('True');
+    }
+    
+}
+
+
+function clearTable(){
+    let index = 0;
+    const tableBodyEl = document.querySelector('#tricks');
+    while(index < tableBodyEl.childElementCount){
+        tableBodyEl.deleteRow(index);
+        index++;
+    }
+    
+
+}
+function clearStorage(){
+    localStorage.clear();
+    var ele = document.getElementsByName('difficulty')
+    for(let i = 0; i< ele.length; i++){
+        loadTricks(getDifficulty(ele, i));
+    }
 }
 
 function loadTricks(whichTricks) {
+    if(whichTricks == null){
+        whichTricks = "Easy";
+    }
     let tricks = [];
     const tricksText = JSON.parse(localStorage.getItem('tricks'));
     if (tricksText) {
       tricks = tricksText;
     }
+    else{
+        localStorage.setItem('tricks', JSON.stringify(tricks));
+    }
     const tableBodyEl = document.querySelector('#tricks');
+    tableBodyEl.innerHTML = "";
     if( whichTricks == 'all'){
         let index = 0;
         while(index < tricks.length){
@@ -43,6 +86,7 @@ function loadTricks(whichTricks) {
             const checkmarkTdEl = document.createElement('td');
             const nameTdEl = document.createElement('td');
             const descriptionTdEl = document.createElement('td');
+            const newButton = document.createElement('button');  
 
             nameTdEl.textContent = specificTrick.name;
 
@@ -58,24 +102,25 @@ function loadTricks(whichTricks) {
     }
     else{
         let index = 0;
-        while(index < tricks.length){
-            const specificTrick = tricks[index];
-            index++;
-            if(specificTrick.difficulty == whichTricks){
-                const checkmarkTdEl = document.createElement('td');
-                const nameTdEl = document.createElement('td');
-                const descriptionTdEl = document.createElement('td');
-
-                nameTdEl.textContent = specificTrick.name;
-
-                const rowEl = document.createElement('tr');
-                rowEl.appendChild(checkmarkTdEl);
-                rowEl.appendChild(nameTdEl);
-                rowEl.appendChild(descriptionTdEl);
-
-                rowEl.name = "trickRow";
-
-                tableBodyEl.appendChild(rowEl);
+        if(tricks.length == 0){
+            tableBodyEl.innerHTML += addTrickFormat;
+        }
+        else{
+            let count = 0;
+            while(index < tricks.length){
+                const specificTrick = tricks[index];
+                index++;
+                if(specificTrick.difficulty == whichTricks){
+                    count++;
+                    let template = trickRowFormat.slice()
+                    template = template.replace('Template Name', specificTrick.name);
+                    template = template.replace('SpecificID', specificTrick.id);
+                    tableBodyEl.innerHTML += template;
+                    
+                }
+            }
+            if(count== 0){
+                tableBodyEl.innerHTML += addTrickFormat;
             }
         }
     }
@@ -83,8 +128,7 @@ function loadTricks(whichTricks) {
 }
 
 function updateTricks(){
-    localStorage.clear();
-    let tricksArray = []
+    let tricksArray = [];
     const tricksText = localStorage.getItem('tricks');
     if(tricksText){
         tricksArray = JSON.parse(tricksText);
@@ -96,10 +140,10 @@ function updateTricks(){
     const descript = "This is a dummy value";
     const backside = "This is a dummy value";
     
+    let idNum = tricksArray.length;
+    const newTrick = {name: trickName, description: descript, difficulty: trickDiff, backside: backside, checked: "False", id: idNum};
 
-    const newTrick = {name: trickName, description: descript, difficulty: trickDiff, backside: backside, checked: "false"};
-    // let newTrick = {name : trickName, description : descript, checked : "false"};
-    tricksArray[0] = newTrick;
+    tricksArray.push(newTrick);
     
     let string = JSON.stringify(tricksArray)
     localStorage.setItem('tricks', string);
