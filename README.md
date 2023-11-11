@@ -53,7 +53,14 @@ Javascript
 - JavaScript support for future login: I put in javascript so that when someone logs in it create a user object and stores the tricks associated.  You can also see it on the leaderboard.
 - JavaScript support for future database data: I used local storage to save the data.  You can add and remove tricks from the table.  I haven't put in code for the above table because I need a database for that.  That part is going above and beyond what is required.
 - JavaScript support for future WebSocket:  The leaderboards will in real time update the leaderboard which other users and their tricks.
-- JavaScript support for your application's interaction logic: I can login, add tricks, and show the leaderboard.  Profile is going above and beyond and that is something I am going to implement later on after this class so I haven't built out all the functions for it. 
+- JavaScript support for your application's interaction logic: I can login, add tricks, and show the leaderboard.  Profile is going above and beyond and that is something I am going to implement later on after this class so I haven't built out all the functions for it.
+
+Service
+- Create an HTTP service using Node.js and Express:  Done! It runs on 8080
+- Frontend served up using express static middleware: I completed this section
+- Your frontend calls third party service endpoints: I had it make a quote on the login page that is random
+- Your backend provides service endpoints:  I did this for leaderboards and index.js
+- Your frontend calls your service endpoints : I did this is leaderboards
 
 
 
