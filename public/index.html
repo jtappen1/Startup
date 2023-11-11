@@ -18,12 +18,13 @@
     <script src="login.js"></script>
     <script src = "tricks.js"></script>
 </head>
+
 <body class="body">
-  <header class= "container-fluid bg-dark text-light">
-    <nav>
-      <div class="parent">
+  <header class= "bg-dark text-light">
+    <nav class = "navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="parent container-fluid bg-dark">
           <div class="child">
-              <h1  <h1 class="company-name"> TRICKTRACKER</h1></h1>
+              <h1 class="company-name"> TRICKTRACKER</h1>
           </div>
           <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
           <div class = "child">
@@ -37,10 +38,11 @@
       </div>  
       </nav>
     </header>
+  <body onload="displayQuote()">
     <main>
       <h1 class = "box1">Welcome to TrickTracker</h1>
       <div class="box2">
-        <h2>Login to Start Tracking Your Tricks</h2>
+        <h2 id = "quote">Login to Start Tracking Your Tricks</h2>
       </div>
       <form method="get" action="home.html">
           <label for="username">Username:</label>
@@ -48,6 +50,7 @@
           <button type="submit" onclick="login() ">Login</button>
         </form>
     </main>
+  </body>
 
   <footer class="bg-dark text-white-50">
     <div>
