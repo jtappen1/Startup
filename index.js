@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
 
 // The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 8080;
@@ -14,17 +15,19 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-apiRouter.get('/users', (_req, res) => {
-    console.log(users);
+apiRouter.get('/users', async (_req, res) => {
+  console.log("We are in the Get")
+  const users =  await DB.getHighScores();
   res.send(users);
   
 });
 
 // SubmitScore
 apiRouter.post('/user', (req, res) => {
-  users = req.body;
-  console.log("Hit post endpoint");
-  res.send(users);
+  console.log("posting data", req.body)
+  DB.addScore(req.body);
+  // const users = DB.getHighScores();
+  res.send(req.body);
 });
 
 // Return the application's default page if the path is unknown
@@ -38,24 +41,3 @@ app.listen(port, () => {
 
 // updateScores considers a new score for inclusion in the high scores.
 // The high scores are saved in memory and disappear whenever the service is restarted.
-let users = [];
-// function updateScores(newScore, scores) {
-//   let found = false;
-//   for (const [i, prevScore] of scores.entries()) {
-//     if (newScore.score > prevScore.score) {
-//       scores.splice(i, 0, newScore);
-//       found = true;
-//       break;
-//     }
-//   }
-
-//   if (!found) {
-//     scores.push(newScore);
-//   }
-
-//   if (scores.length > 10) {
-//     scores.length = 10;
-//   }
-
-//   return scores;
-// }

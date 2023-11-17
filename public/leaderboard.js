@@ -6,27 +6,28 @@ let userName;
 
 class usersClass {
     async setUpLeaderBoards(){
-        let users;
+        let users = [];
         if(localStorage.getItem('users') == null){
-            users  = new Map();
+            users  = []
             usersGlobal = users;
-            try {
-                const response = await fetch('/api/user', {
-                  method: 'POST',
-                  headers: {'content-type': 'application/json'},
-                  body: JSON.stringify(Array.from(users.entries())),
-                });
-                console.log("Posted Sucessfully")
-            }
-            catch{
-                console.log("Error Setup Leaderboards")
-            }
-            localStorage.setItem('users', JSON.stringify(Array.from(users.entries())));
+            // try {
+            //     const response = await fetch('/api/user', {
+            //       method: 'POST',
+            //       headers: {'content-type': 'application/json'},
+            //       body: JSON.stringify(Array.from(users.entries())),
+            //     });
+            //     console.log("Posted Sucessfully")
+            // }
+            // catch{
+            //     console.log("Error Setup Leaderboards")
+            // }
+            localStorage.setItem('users', JSON.stringify(users));
         }
         else{
-            users = await fetch('/api/users');
-            users = new Map(JSON.parse(localStorage.getItem('users')));
-            usersGlobal = users;
+            const response = await fetch('/api/users');
+            users = await response.json();
+            console.log("Response from Server: ", users)
+            
         }
     
         if(localStorage.getItem('username') != null){
@@ -40,6 +41,7 @@ class usersClass {
     
      async setTrickInfo(users){
         let tricks = this.getTricks();
+        console.log("Getting tricks ", tricks )
         let trickScore = 0;
         const numTricks = tricks.length;
     
@@ -55,46 +57,47 @@ class usersClass {
                 trickScore += 25;
             }
         }
-    
-        if(users.get(userName) == null && userName != null){
+        var foundUser = false
+        for(let i = 0; i < users.length; i++){
+            if(userName == users[i].username){
+                users[i].trickScore = trickScore
+                users[i].numTricks = numTricks
+                foundUser = true
+
+            }
+        }
+        if(foundUser == false){
             const newUser = {name: "", username: userName, trickScore: trickScore, numTricks:numTricks};
-            users.set(userName, newUser);
+            users.push(newUser);
+            try {
+                const response = await fetch('/api/user', {
+                  method: 'POST',
+                  headers: {'content-type': 'application/json'},
+                  body: JSON.stringify(newUser)
+                });
+                console.log("Posted Sucessfully")
+            }
+            catch(error){
+                console.log("Error Setup Leaderboards", error)
+            }
         }
-        else if(users.get(userName)!= null){
-            let editUser = users.get(userName);
-            editUser.trickScore = trickScore;
-            editUser.numTricks = numTricks;
-            //MAY NEED TO REMOVE AND RE ADD
-        }
-        localStorage.setItem('users', JSON.stringify(Array.from(users.entries())));
-        try {
-            const response = await fetch('/api/user', {
-              method: 'POST',
-              headers: {'content-type': 'application/json'},
-              body: JSON.stringify(Array.from(users.entries())),
-            });
-            console.log("Posted Sucessfully")
-        }
-        catch{
-            console.log("Error Setup Leaderboards")
-        }
+        localStorage.setItem('users', JSON.stringify(users));
         this.updateUsers(users);
     }
 
     updateUsers(users){
-        const usersTableBodyEl = document.querySelector('#users');
-        let usersArray = Array.from(users.entries());
-        usersTableBodyEl.innerHTML = "";
-        if(usersArray.length ==0){
+        const usersTableBodyEl = document.querySelector('#usersTable');
+        // usersTableBodyEl.innerHTML = "";
+        if(users.length ==0){
             usersTableBodyEl.innerHTML += noUserRowFormat;
         }
         else{
-            for(let i = 0; i< usersArray.length; i++){
-                let specificUser = usersArray[i];
+            for(let i = 0; i< users.length; i++){
+                let specificUser = users[i];
                 let template = userRowFormat.slice()
-                template = template.replace('Template Name', specificUser[1].username);
-                template = template.replace('Template Points', specificUser[1].trickScore);
-                template = template.replace('Template NumTricks', specificUser[1].numTricks);
+                template = template.replace('Template Name', specificUser.username);
+                template = template.replace('Template Points', specificUser.trickScore);
+                template = template.replace('Template NumTricks', specificUser.numTricks);
                 usersTableBodyEl.innerHTML += template;
             }
         }
