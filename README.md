@@ -62,6 +62,10 @@ Service
 - Your backend provides service endpoints:  I did this for leaderboards and index.js
 - Your frontend calls your service endpoints : I did this is leaderboards
 
+Database:
+- MongoDB Atlas database created: Created this!
+- Provides backend endpoints for manipulating application data : Done, its in my index.js
+- Stores application data in MongoDB : This works and is done.
 
 
 
