@@ -10,17 +10,6 @@ class usersClass {
         if(localStorage.getItem('users') == null){
             users  = []
             usersGlobal = users;
-            // try {
-            //     const response = await fetch('/api/user', {
-            //       method: 'POST',
-            //       headers: {'content-type': 'application/json'},
-            //       body: JSON.stringify(Array.from(users.entries())),
-            //     });
-            //     console.log("Posted Sucessfully")
-            // }
-            // catch{
-            //     console.log("Error Setup Leaderboards")
-            // }
             localStorage.setItem('users', JSON.stringify(users));
         }
         else{
@@ -31,7 +20,7 @@ class usersClass {
         }
     
         if(localStorage.getItem('username') != null){
-            userName = JSON.parse(localStorage.getItem('username'));
+            userName = localStorage.getItem('username');
         }
         else{
             userName = null;
@@ -59,29 +48,30 @@ class usersClass {
         }
         var foundUser = false
         for(let i = 0; i < users.length; i++){
-            if(userName == users[i].username){
+            if(userName == users[i].email){
                 users[i].trickScore = trickScore
                 users[i].numTricks = numTricks
                 foundUser = true
 
+
             }
         }
-        if(foundUser == false){
-            const newUser = {name: "", username: userName, trickScore: trickScore, numTricks:numTricks};
-            users.push(newUser);
-            try {
-                const response = await fetch('/api/user', {
-                  method: 'POST',
-                  headers: {'content-type': 'application/json'},
-                  body: JSON.stringify(newUser)
-                });
-                console.log("Posted Sucessfully")
-            }
-            catch(error){
-                console.log("Error Setup Leaderboards", error)
-            }
-        }
-        localStorage.setItem('users', JSON.stringify(users));
+        // if(foundUser == false){
+        //     const newUser = {name: "", username: userName, trickScore: trickScore, numTricks:numTricks};
+        //     users.push(newUser);
+        //     try {
+        //         const response = await fetch('/api/user', {
+        //           method: 'POST',
+        //           headers: {'content-type': 'application/json'},
+        //           body: JSON.stringify(newUser)
+        //         });
+        //         console.log("Posted Sucessfully")
+        //     }
+        //     catch(error){
+        //         console.log("Error Setup Leaderboards", error)
+        //     }
+        // }
+        // localStorage.setItem('users', JSON.stringify(users));
         this.updateUsers(users);
     }
 
@@ -95,7 +85,7 @@ class usersClass {
             for(let i = 0; i< users.length; i++){
                 let specificUser = users[i];
                 let template = userRowFormat.slice()
-                template = template.replace('Template Name', specificUser.username);
+                template = template.replace('Template Name', specificUser.email);
                 template = template.replace('Template Points', specificUser.trickScore);
                 template = template.replace('Template NumTricks', specificUser.numTricks);
                 usersTableBodyEl.innerHTML += template;
