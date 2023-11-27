@@ -67,5 +67,11 @@ Database:
 - Provides backend endpoints for manipulating application data : Done, its in my index.js
 - Stores application data in MongoDB : This works and is done.
 
+Login
+- Supports new user registration: There is a create button that works
+- Supports existing user authentication: This works as well!
+- Stores and retrieves credentials in MongoDB: This works
+- Restricts application functionality based upon authentication: You cant log tricks until you login.
+
 
 
