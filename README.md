@@ -73,5 +73,11 @@ Login
 - Stores and retrieves credentials in MongoDB: This works
 - Restricts application functionality based upon authentication: You cant log tricks until you login.
 
+Websocket
+- Backend listens for WebSocket connection:  It does this!
+- Frontend makes WebSocket connection  It does this!
+- Data sent over WebSocket connection: Tells when a player connects and disconnects, as well as their name and when a new trick is added
+- WebSocket data displayed in the application interface: At the top it shows a list of the tricks that have been learned. and all other notifications.
+
 
 
