@@ -16,7 +16,6 @@
             integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
             crossorigin="anonymous"
         />
-        <script src="tricks.js"></script>
     </head>
 
     <header class= "bg-dark text-light">
@@ -37,8 +36,17 @@
           </div>  
           </nav>
         </header>
-        <body onload="loadTricks('Easy')">
+        <body onload="loadTricks('Easy'), constructor()">
             <main class="container-fluid text-center">
+                <div class="players">
+                    Player:
+                    <span class="player-name"></span>
+                    <div id="player-messages">
+                      <!-- <div class="event"><span class="player-event">Håkon</span> scored 377</div>
+                      <div class="event"><span class="player-event">Tim</span> started a new game</div>
+                      <div class="event"><span class="system-event">game</span> connected</div> -->
+                    </div>
+                  </div>
                 <div class="row">
                     <div class="col container-s">
                         <table class="table table-warning table-striped-columns">
@@ -142,6 +150,7 @@
                     </table>
                 </div>
             </main>
+            <script src="tricks.js"></script>
         </body>
         
 
