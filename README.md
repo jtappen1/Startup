@@ -77,7 +77,14 @@ Websocket
 - Backend listens for WebSocket connection:  It does this!
 - Frontend makes WebSocket connection  It does this!
 - Data sent over WebSocket connection: Tells when a player connects and disconnects, as well as their name and when a new trick is added
-- WebSocket data displayed in the application interface: At the top it shows a list of the tricks that have been learned. and all other notifications.
+- WebSocket data displayed in the application interface: At the top it shows a list of the tricks that have been learned. and all other notifications.\
+
+
+React
+- Bundled using WebPack and Babel as generated from using create-react-app: Yes did this when I deployed the app.
+- Multiple functional react components : Yes! Changed functionality to the app to be React and changed functions to make the table work and the scoreboard to be React components
+- React router: Made a React Router!
+- React hooks Did this! made hooks especially for The leaderboards and home functionality.
 
 
 
