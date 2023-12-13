@@ -21,17 +21,18 @@ body {
     list-style: none; */
   
   main {
-    flex: 1;
-    margin-top: 80px;
     display: flex;
+    flex: 0 100vh;
+    min-width: 375px;
+    height: 100vh;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    background-image: url('images/intropic.jpg');
-    /* background-repeat: repeat-x; */
-    background-size: contain;
+    justify-content: space-around;   
+    background-image: url('images/skateboarder.jpg');
+    background-repeat: repeat-x;
+    /* background-size: contain; */
     /* background-size: 100% 100%; */
-    background-position: center center;
+    background-position: center left;
   }
   footer {
     flex: 0 30px;
@@ -105,13 +106,13 @@ body {
   }
   .box2 {
     padding: 150 px;
-    width: 350px;
-    height: 300px;
-    background-image: url('images/skateboarder.jpg') ;
+    width: 400;
+    height: 100;
+    /* background-image: url('images/skateboarder.jpg') ; */
     /* background-attachment: fixed; */
-    background-size: cover;
+    /* background-size: cover; */
     /* border-radius: 200px / 100px; */
-    background-color: white;
+    background-color: black;
     text-align: center;
     color: white;
     border-style: double;

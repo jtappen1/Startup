@@ -1,0 +1,131 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    height: 100vh;
+}
+  
+  /* header {
+    flex: 0 80px;
+    flex-direction: row;
+    position: fixed;
+    text-align: left;
+    background-color: black;
+
+  } */
+    /* flex: 1;
+    display: flex;
+    /*  overwrite Bootstrap so the menu does not wrap */
+    /* flex-direction: row !important;
+    list-style: none; */
+  
+  main {
+    flex: 0 100vh;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-image: url('images/intropic.jpg');
+    /* background-repeat: repeat-x; */
+    background-size: contain;
+    /* background-size: 100% 100%; */
+    background-position: center center;
+  }
+  footer {
+    flex: 0 30px;
+    align-items: flex-end;
+  }
+  
+  menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none; 
+  }
+  
+  .navbar-brand {
+    padding-left: 10px;
+    /* border-bottom: solid rgb(182, 182, 182) thin; */
+  }
+  .company-name{
+    font-variant: small-caps;
+    font-size: 65px;
+    padding-left: 10px;
+    
+  }
+  
+  menu .nav-item {
+    padding: 5px;
+    font-size: large;
+  }
+  
+  footer a {
+    float: right;
+  }
+  
+  @media (max-height: 600px) {
+    header {
+      display: none;
+    }
+    footer {
+      display: none;
+    }
+    main {
+      flex: 1 100vh;
+    }
+  }
+  .parent {
+    text-align: center;
+  }
+  .child {
+    display: inline-block;
+    vertical-align: left;
+    justify-content: space-between;
+  }
+  @keyframes example {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+  }
+  
+  /* The element to apply the animation to */
+  .box1 {
+    padding: 20px;
+    width: 500px;
+    height: 100px;
+    /* border-radius: 100px / 50px; */
+    box-shadow: 10px 10px;
+    background-color: white;
+    text-align: center;
+    /* animation-name: example;
+    animation-duration: 20s; */
+  }
+  .box2 {
+    padding: 150 px;
+    width: 350px;
+    height: 300px;
+    background-image: url('images/skateboarder.jpg') ;
+    /* background-attachment: fixed; */
+    background-size: cover;
+    /* border-radius: 200px / 100px; */
+    background-color: white;
+    text-align: center;
+    color: white;
+    border-style: double;
+    
+    /* animation-name: example;  */
+    /* animation-duration: 100s; */
+  }
+  div.scroll {
+    margin:4px, 4px;
+    padding:4px;
+    background-color: green;
+    width: 500px;
+    height: 110px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+}

@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
